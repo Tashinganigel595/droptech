@@ -1,14 +1,16 @@
 const products = [
-  { id: "jelly-silicones", name: "Jelly silicones", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful phone protection", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
-  { id: "silicone-case", name: "Silicone", price: 50, category: "Phone cases", emoji: "📱", color: "peach", caption: "A smooth silicone phone case", image: "WhatsApp Image 2026-11-13 at 04.51.29.jpeg" },
-  { id: "magsafe", name: "MagSafe", price: 50, category: "Accessories", emoji: "🧲", color: "mint", caption: "Magnetic phone accessory", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
-  { id: "iphone-cables", name: "iPhone cables", price: 45, category: "Chargers & cables", emoji: "🔌", color: "blue", caption: "Charging cable for iPhone" },
-  { id: "iphone-charger", name: "Complete iPhone charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "yellow", caption: "Complete charger set" },
-  { id: "samsung-charger", name: "Complete Samsung charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "mint", caption: "Complete charger set" },
-  { id: "flash-drive", name: "Flash drive 32GB", price: 150, category: "Storage & adapters", emoji: "💾", color: "slate", caption: "32GB portable storage" },
-  { id: "otg", name: "OTG", price: 10, category: "Storage & adapters", emoji: "🔌", color: "coral", caption: "On-the-go adapter" },
+  { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful phone protection", image: "WhatsApp Image 2026-11-13 at 04.51.30.jpeg" },
+  { id: "pearl-jelly-case", name: "Pearl Charm Jelly Case", price: 60, category: "Phone cases", emoji: "📱", color: "pink", caption: "Cute beaded design with charm", image: "WhatsApp Image 2026-11-13 at 05.04.55.jpeg" },
+  { id: "pastel-silicone-case", name: "Pastel Silicone Case", price: 58, category: "Phone cases", emoji: "📱", color: "mint", caption: "Soft pastel finish for daily wear", image: "WhatsApp Image 2026-11-13 at 05.04.56.jpeg" },
+  { id: "magsafe-case", name: "MagSafe Silicone Case", price: 80, category: "MagSafe", emoji: "🧲", color: "lavender", caption: "Magnetic compatibility with a stylish finish", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
+  { id: "diamond-lens-protector", name: "Diamond Camera Lens Protector", price: 45, category: "Screen & lens", emoji: "📷", color: "rose", caption: "Sparkling lens cover with a diamond style", image: "WhatsApp Image 2026-11-13 at 04.51.29.jpeg" },
+  { id: "tempered-glass", name: "Tempered Glass Screen Protector", price: 35, category: "Screen & lens", emoji: "🛡️", color: "teal", caption: "Clear protective glass for your screen", image: "WhatsApp Image 2026-11-11 at 20.43.14.jpeg" },
+  { id: "pearl-phone-charm", name: "Pearl Phone Charm", price: 25, category: "Accessories", emoji: "✨", color: "coral", caption: "Cute bead charm for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.33.jpeg" },
+  { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 18, category: "Chargers & cables", emoji: "🔌", color: "orange", caption: "Fast connectivity for drives and accessories", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
+  { id: "type-c-cable", name: "Type-C Charging Cable", price: 40, category: "Chargers & cables", emoji: "🔌", color: "blue", caption: "Durable cable for fast charging", image: "WhatsApp Image 2026-11-13 at 04.51.31.jpeg" },
   { id: "airpods-pro", name: "AirPods Pro Gen 2", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds" },
-  { id: "camera-lenses", name: "Camera lenses", price: 60, category: "Accessories", emoji: "📷", color: "blue", caption: "Add-on lenses for your phone" },
+  { id: "iphone-charger", name: "Complete iPhone Charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "yellow", caption: "Complete charger set" },
+  { id: "samsung-charger", name: "Complete Samsung Charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "mint", caption: "Complete charger set" },
 ];
 
 const whatsappNumber = "263775918741";
