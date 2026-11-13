@@ -1,7 +1,7 @@
 const products = [
-  { id: "jelly-silicones", name: "Jelly silicones", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful phone protection" },
-  { id: "silicone-case", name: "Silicone", price: 50, category: "Phone cases", emoji: "📱", color: "peach", caption: "A smooth silicone phone case" },
-  { id: "magsafe", name: "MagSafe", price: 50, category: "Accessories", emoji: "🧲", color: "mint", caption: "Magnetic phone accessory" },
+  { id: "jelly-silicones", name: "Jelly silicones", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful phone protection", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
+  { id: "silicone-case", name: "Silicone", price: 50, category: "Phone cases", emoji: "📱", color: "peach", caption: "A smooth silicone phone case", image: "WhatsApp Image 2026-11-13 at 04.51.29.jpeg" },
+  { id: "magsafe", name: "MagSafe", price: 50, category: "Accessories", emoji: "🧲", color: "mint", caption: "Magnetic phone accessory", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
   { id: "iphone-cables", name: "iPhone cables", price: 45, category: "Chargers & cables", emoji: "🔌", color: "blue", caption: "Charging cable for iPhone" },
   { id: "iphone-charger", name: "Complete iPhone charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "yellow", caption: "Complete charger set" },
   { id: "samsung-charger", name: "Complete Samsung charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "mint", caption: "Complete charger set" },
@@ -49,7 +49,9 @@ function renderProducts() {
   grid.innerHTML = visibleProducts.map((product) => `
     <article class="product-card">
       <div class="product-visual ${product.color}">
-        <span class="product-emoji" aria-hidden="true">${product.emoji}</span>
+        ${product.image
+          ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;" />`
+          : `<span class="product-emoji" aria-hidden="true">${product.emoji}</span>`}
         <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${escapeHtml(product.name)} to bag">+</button>
       </div>
       <div class="product-info">
