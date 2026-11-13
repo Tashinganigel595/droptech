@@ -1,5 +1,6 @@
 const products = [
   { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful protection for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.30.jpeg" },
+  { id: "iphone-14-silicone-case", name: "iPhone 14 Silicone Case", price: 50, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft-touch silicone case made for the iPhone 14", image: "silicone.jpeg" },
   { id: "pearl-jelly-case", name: "Charmed Phone Pouch", price: 60, category: "Phone cases", emoji: "📱", color: "pink", caption: "A phone pouch with a decorative charm design", image: "WhatsApp Image 2026-11-13 at 05.04.55.jpeg" },
   { id: "pastel-silicone-case", name: "Pastel Silicone Case", price: 58, category: "Phone cases", emoji: "📱", color: "mint", caption: "A soft-touch case in a pastel style", image: "WhatsApp Image 2026-11-13 at 05.04.56.jpeg" },
   { id: "magsafe-case", name: "MagSafe-Compatible Case", price: 80, category: "MagSafe accessories", emoji: "🧲", color: "lilac", caption: "Case with a built-in magnetic ring", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
@@ -8,6 +9,7 @@ const products = [
   { id: "pearl-phone-charm", name: "Beaded Phone Charm", price: 25, category: "Phone charms", emoji: "✨", color: "coral", caption: "A colorful beaded accessory for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.33.jpeg" },
   { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 18, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Connect compatible USB accessories to your device", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
   { id: "type-c-cable", name: "Type-C Charging Cable", price: 40, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Charging cable for compatible USB-C devices" },
+  { id: "verbatim-flash-drive-16gb", name: "Verbatim 16GB Flash Drive", price: 150, category: "Storage", emoji: "💾", color: "blue", caption: "USB 2.0 flash drive for files, notes and photos", image: "flash_drive.jpeg" },
   { id: "airpods-pro", name: "AirPods Pro (2nd Generation)", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds" },
   { id: "iphone-charger", name: "iPhone Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "yellow", caption: "Complete charger set for compatible iPhone models" },
   { id: "samsung-charger", name: "Samsung Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "mint", caption: "Complete charger set for compatible Samsung devices" },
