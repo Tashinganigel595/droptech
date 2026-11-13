@@ -1,7 +1,7 @@
 const products = [
   { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful protection for your phone", image: "jellysiliconepouch.jpeg" },
   { id: "iphone-14-silicone-case", name: "silicone pouch", price: 50, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft-touch silicone case made for the iPhone 14", image: "silicone.jpeg" },
-  { id: "pearl-jelly-case", name: "Charmed Phone Pouch", price: 45, category: "Phone cases", emoji: "📱", color: "pink", caption: "A phone pouch with a decorative charm design", image: "beaded_charms.jpeg" },
+  { id: "pearl-jelly-case", name: "Charmed Phone Pouch", price: 45, category: "Phone cases", emoji: "📱", color: "pink", caption: "A phone pouch with a decorative charm design", image: "beadedphone-pouch.jpeg" },
   { id: "pastel-silicone-case", name: "camera lenses", price: 60, category: "Phone cases", emoji: "📱", color: "mint", caption: "A soft-touch case in a pastel style", image: "camera lenses.jpeg" },
   { id: "magsafe-case", name: "MagSafe-Compatible Case", price: 50, category: "MagSafe accessories", emoji: "🧲", color: "lilac", caption: "Case with a built-in magnetic ring", image: "magsafe.jpeg" },
   { id: "diamond-lens-protector", name: "Decorative Camera Lens Protector", price: 60, category: "Screen & camera protection", emoji: "📷", color: "pink", caption: "Decorative covers for your phone camera lenses", image: "camear lenses.jpeg" },
