@@ -9,7 +9,7 @@ const products = [
   { id: "pearl-phone-charm", name: "Beaded Phone Charm", price: 25, category: "Phone charms", emoji: "✨", color: "coral", caption: "A colorful beaded accessory for your phone", image: "beaded_charms.jpeg" },
   { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 10, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Connect compatible USB accessories to your device", image: "OTG.jpeg" },
   { id: "type-c-cable", name: "Type-C Charging Cable", price: 45, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Charging cable for compatible USB-C devices" },
-  { id: "verbatim-flash-drive-16gb", name: "Verbatim 16GB Flash Drive", price: 150, category: "Storage", emoji: "💾", color: "blue", caption: "USB 2.0 flash drive for files, notes and photos", image: "flash_drive.jpeg" },
+  { id: "verbatim-flash-drive-16gb", name: "Verbatim 16GB Flash Drive", price: 150, category: "Storage", emoji: "💾", color: "blue", caption: "USB 2.0 flash drive for files, notes and photos", image: "flash drive.jpeg" },
   { id: "airpods-pro", name: "AirPods Pro (2nd Generation)", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds" },
   { id: "iphone-charger", name: "iPhone Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "yellow", caption: "Complete charger set for compatible iPhone models" },
   { id: "samsung-charger", name: "Samsung Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "mint", caption: "Complete charger set for compatible Samsung devices" },
