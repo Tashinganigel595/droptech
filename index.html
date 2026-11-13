@@ -4,209 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f8fc" />
-    <meta
-      name="description"
-      content="Shop phone accessories and arrange easy campus pickup."
-    />
+    <meta name="description" content="Shop phone accessories and arrange easy campus pickup." />
     <title>DropTech — phone accessories, made easy</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
+    <script src="pwa.js" defer></script>
+    <style>[hidden] { display: none !important; } .install-button { margin-left: 10px; padding: 0 14px; cursor: pointer; } @media (max-width: 650px) { .install-button { margin: 12px 0 0; } }</style>
   </head>
   <body>
-    <div class="announcement">
-      <span class="announcement-sparkle" aria-hidden="true">✦</span>
-      Campus delivery made simple <span class="announcement-divider">·</span>
-      Order today, meet up on campus
-    </div>
-
+    <div class="announcement"><span class="announcement-sparkle" aria-hidden="true">✦</span> Campus delivery made simple <span class="announcement-divider">·</span> Order today, meet up on campus</div>
     <header class="site-header">
-      <a class="brand" href="#" aria-label="DropTech home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" fill="none">
-            <rect x="8" y="3" width="20" height="30" rx="6" fill="currentColor" />
-            <rect x="11" y="7" width="14" height="19" rx="2" fill="#fff" />
-            <circle cx="18" cy="29" r="1.5" fill="#fff" />
-            <path d="m19.4 10-5 8h4l-1.8 5 5.2-8h-4l1.6-5Z" fill="#7258F5" />
-          </svg>
-        </span>
-        <span class="brand-name">drop<span>tech</span></span>
-      </a>
-
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a class="nav-link active" href="#shop">Shop</a>
-        <a class="nav-link" href="#why-us">Why DropTech</a>
-        <a class="nav-link" href="#footer">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="cart-button" id="cart-open" aria-label="Open shopping bag">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 8h14l1 12H4L5 8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
-            <path d="M9 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-          </svg>
-          <span>Bag</span>
-          <span class="cart-count" id="cart-count">0</span>
-        </button>
-      </div>
+      <a class="brand" href="#" aria-label="DropTech home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><rect x="8" y="3" width="20" height="30" rx="6" fill="currentColor"/><rect x="11" y="7" width="14" height="19" rx="2" fill="#fff"/><circle cx="18" cy="29" r="1.5" fill="#fff"/><path d="m19.4 10-5 8h4l-1.8 5 5.2-8h-4l1.6-5Z" fill="#7258F5"/></svg></span><span class="brand-name">drop<span>tech</span></span></a>
+      <nav class="desktop-nav" aria-label="Main navigation"><a class="nav-link active" href="#shop">Shop</a><a class="nav-link" href="#why-us">Why DropTech</a><a class="nav-link" href="#footer">Contact</a></nav>
+      <div class="header-actions"><button class="button button-dark install-button" id="install-app" type="button" hidden>Install app</button><button class="cart-button" id="cart-open" aria-label="Open shopping bag"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Bag</span><span class="cart-count" id="cart-count">0</span></button></div>
     </header>
-
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR CAMPUS ACCESSORY SPOT</div>
-          <h1 id="hero-title">A little upgrade<br />for your <span>everyday.</span></h1>
-          <p>Find your new favorite phone essentials. Browse, add to your bag, and arrange a simple campus pickup.</p>
-          <a class="button button-dark hero-button" href="#shop">
-            Find your thing
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </a>
-          <div class="hero-notes">
-            <span><span class="check-icon">✓</span> Easy campus pickup</span>
-            <span><span class="check-icon">✓</span> Order on WhatsApp</span>
-          </div>
-        </div>
-        <div class="hero-art" aria-label="Phone accessories illustration">
-          <div class="hero-art-orbit orbit-one"></div>
-          <div class="hero-art-orbit orbit-two"></div>
-          <div class="hero-sticker sticker-top">GOOD<br />VIBES <span>✦</span></div>
-          <div class="hero-phone">
-            <div class="phone-camera"><i></i><i></i><i></i></div>
-            <div class="phone-art">
-              <span class="phone-art-flower">✿</span>
-              <span class="phone-art-star">✦</span>
-              <span class="phone-art-word">stay<br />bright</span>
-            </div>
-          </div>
-          <div class="hero-earbuds"><span></span><span></span><i></i></div>
-          <div class="hero-charger"><span></span><i></i><i></i></div>
-          <div class="hero-sticker sticker-bottom"><span>✳</span> LITTLE<br />THINGS,<br />BIG JOY</div>
-          <div class="hero-sparkle sparkle-one">✦</div>
-          <div class="hero-sparkle sparkle-two">✳</div>
-          <div class="hero-sparkle sparkle-three">✧</div>
-        </div>
-        <div class="hero-footnote"><span class="footnote-line"></span> THE GOOD STUFF, RIGHT AROUND THE CORNER</div>
-      </section>
-
-      <section class="perks" id="why-us" aria-label="Shopping benefits">
-        <div class="perk">
-          <span class="perk-icon perk-icon-lilac" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </span>
-          <span><strong>Good finds, no fuss</strong><small>Little upgrades for your everyday</small></span>
-        </div>
-        <div class="perk">
-          <span class="perk-icon perk-icon-peach" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v11H3zM14 11h4l3 3v4h-7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><circle cx="7.5" cy="18" r="2" fill="currentColor" /></svg>
-          </span>
-          <span><strong>Meet up on campus</strong><small>Arrange an easy pickup by chat</small></span>
-        </div>
-        <div class="perk">
-          <span class="perk-icon perk-icon-mint" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-8-4.5-8-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.5-8 10-8 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
-          </span>
-          <span><strong>Picked with you in mind</strong><small>Cases, chargers & more favorites</small></span>
-        </div>
-      </section>
-
-      <section class="shop-section" id="shop">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow"><span class="eyebrow-dot"></span> THE CAMPUS EDIT</div>
-            <h2>Find your <span>favorite.</span></h2>
-          </div>
-          <div class="shop-tools">
-            <label class="search-box">
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.6" /><path d="m13 13 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
-              <input id="product-search" type="search" placeholder="Find an accessory" aria-label="Search accessories" />
-            </label>
-            <button class="mobile-cart-button" id="mobile-cart-open" aria-label="Open shopping bag">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><path d="M9 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
-              <span class="cart-count" id="mobile-cart-count">0</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="category-list" id="category-list" aria-label="Filter products by category"></div>
-        <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <div class="empty-state" id="empty-state" hidden>
-          <span>✿</span>
-          <strong>No matches this time</strong>
-          <p>Try another search or choose a different category.</p>
-        </div>
-      </section>
-
-      <section class="campus-banner">
-        <div class="banner-star" aria-hidden="true">✳</div>
-        <div>
-          <p class="banner-kicker">MADE FOR YOUR CAMPUS DAYS</p>
-          <h2>Your phone called.<br /><span>It wants a little treat.</span></h2>
-        </div>
-        <a class="button button-light" href="#shop">Shop accessories <span aria-hidden="true">↗</span></a>
-        <span class="banner-doodle" aria-hidden="true">✿</span>
-      </section>
+      <section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR CAMPUS ACCESSORY SPOT</div><h1 id="hero-title">A little upgrade<br />for your <span>everyday.</span></h1><p>Find your new favorite phone essentials. Browse, add to your bag, and arrange a simple campus pickup.</p><a class="button button-dark hero-button" href="#shop">Find your thing <span aria-hidden="true">→</span></a><button class="button button-dark install-button" id="install-app-mobile" type="button" hidden>Install DropTech</button><div class="hero-notes"><span><span class="check-icon">✓</span> Easy campus pickup</span><span><span class="check-icon">✓</span> Order on WhatsApp</span></div></div><div class="hero-art" aria-label="Phone accessories illustration"><div class="hero-art-orbit orbit-one"></div><div class="hero-art-orbit orbit-two"></div><div class="hero-sticker sticker-top">GOOD<br />VIBES <span>✦</span></div><div class="hero-phone"><div class="phone-camera"><i></i><i></i><i></i></div><div class="phone-art"><span class="phone-art-flower">✿</span><span class="phone-art-star">✦</span><span class="phone-art-word">stay<br />bright</span></div></div><div class="hero-earbuds"><span></span><span></span><i></i></div><div class="hero-charger"><span></span><i></i><i></i></div><div class="hero-sticker sticker-bottom"><span>✳</span> LITTLE<br />THINGS,<br />BIG JOY</div><div class="hero-sparkle sparkle-one">✦</div><div class="hero-sparkle sparkle-two">✳</div><div class="hero-sparkle sparkle-three">✧</div></div><div class="hero-footnote"><span class="footnote-line"></span> THE GOOD STUFF, RIGHT AROUND THE CORNER</div></section>
+      <section class="perks" id="why-us" aria-label="Shopping benefits"><div class="perk"><span class="perk-icon perk-icon-lilac" aria-hidden="true">✦</span><span><strong>Good finds, no fuss</strong><small>Little upgrades for your everyday</small></span></div><div class="perk"><span class="perk-icon perk-icon-peach" aria-hidden="true">↗</span><span><strong>Meet up on campus</strong><small>Arrange an easy pickup by chat</small></span></div><div class="perk"><span class="perk-icon perk-icon-mint" aria-hidden="true">♡</span><span><strong>Picked with you in mind</strong><small>Cases, chargers & more favorites</small></span></div></section>
+      <section class="shop-section" id="shop"><div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> THE CAMPUS EDIT</div><h2>Find your <span>favorite.</span></h2></div><div class="shop-tools"><label class="search-box"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Find an accessory" aria-label="Search accessories" /></label><button class="mobile-cart-button" id="mobile-cart-open" aria-label="Open shopping bag"><span aria-hidden="true">▱</span><span class="cart-count" id="mobile-cart-count">0</span></button></div></div><div class="category-list" id="category-list" aria-label="Filter products by category"></div><div class="product-grid" id="product-grid" aria-live="polite"></div><div class="empty-state" id="empty-state" hidden><span>✿</span><strong>No matches this time</strong><p>Try another search or choose a different category.</p></div></section>
+      <section class="campus-banner"><div class="banner-star" aria-hidden="true">✳</div><div><p class="banner-kicker">MADE FOR YOUR CAMPUS DAYS</p><h2>Your phone called.<br /><span>It wants a little treat.</span></h2></div><a class="button button-light" href="#shop">Shop accessories <span aria-hidden="true">↗</span></a><span class="banner-doodle" aria-hidden="true">✿</span></section>
     </main>
-
-    <footer id="footer">
-      <a class="brand footer-brand" href="#" aria-label="DropTech home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" fill="none"><rect x="8" y="3" width="20" height="30" rx="6" fill="currentColor" /><rect x="11" y="7" width="14" height="19" rx="2" fill="#fff" /><circle cx="18" cy="29" r="1.5" fill="#fff" /><path d="m19.4 10-5 8h4l-1.8 5 5.2-8h-4l1.6-5Z" fill="#7258F5" /></svg>
-        </span>
-        <span class="brand-name">drop<span>tech</span></span>
-      </a>
-      <p>Your campus accessory spot. Find your thing, then say hello.</p>
-      <a class="footer-whatsapp" href="https://wa.me/263775918741" target="_blank" rel="noopener noreferrer">WhatsApp: +263 775 918 741 <span aria-hidden="true">↗</span></a>
-      <div class="footer-bottom">
-        <span>© <span id="current-year"></span> DropTech</span>
-        <span>Made for campus life <span class="footer-heart">♥</span></span>
-      </div>
-    </footer>
-
-    <div class="overlay" id="overlay" hidden></div>
-    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
-      <div class="drawer-header">
-        <div><p class="drawer-kicker">YOUR LITTLE FINDS</p><h2>Your bag <span id="drawer-item-count">(0)</span></h2></div>
-        <button class="icon-button" id="cart-close" aria-label="Close shopping bag">×</button>
-      </div>
-      <div class="cart-items" id="cart-items"></div>
-      <div class="cart-empty" id="cart-empty">
-        <div class="empty-bag-icon">♡</div>
-        <strong>Your bag is taking a breather</strong>
-        <p>Go find something that makes you smile.</p>
-        <button class="button button-dark" id="keep-shopping">Explore the shop</button>
-      </div>
-      <div class="cart-footer" id="cart-footer">
-        <div class="subtotal-row"><span>Priced items</span><strong id="cart-subtotal"></strong></div>
-        <p>Pickup and payment details can be confirmed on WhatsApp.</p>
-        <button class="button button-dark checkout-button" id="checkout-open">Continue to order <span>→</span></button>
-      </div>
-    </aside>
-
-    <div class="modal-wrap" id="checkout-modal" hidden>
-      <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
-        <div class="modal-header">
-          <div><p class="drawer-kicker">ONE LAST THING</p><h2 id="checkout-title">Let’s make it yours.</h2></div>
-          <button class="icon-button" id="checkout-close" aria-label="Close order form">×</button>
-        </div>
-        <p class="modal-intro">Share a few details, then send your order straight to WhatsApp to confirm pickup and payment.</p>
-        <form id="checkout-form">
-          <label class="form-label" for="customer-name">Your name</label>
-          <input class="form-input" id="customer-name" name="name" autocomplete="name" placeholder="e.g. Alex" required />
-          <label class="form-label" for="pickup-location">Where should we meet on campus?</label>
-          <input class="form-input" id="pickup-location" name="pickup" placeholder="e.g. Main library" required />
-          <label class="form-label" for="order-note">Anything else? <span>(optional)</span></label>
-          <textarea class="form-input form-textarea" id="order-note" name="note" rows="2" placeholder="Color preference, a question, etc."></textarea>
-          <div class="order-summary"><span>Priced items</span><strong id="checkout-subtotal"></strong></div>
-          <button class="button button-dark checkout-submit" type="submit">Send order on WhatsApp <span>↗</span></button>
-          <p class="form-footnote">Your order isn’t final until you confirm it with the seller.</p>
-        </form>
-      </section>
-    </div>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer id="footer"><a class="brand footer-brand" href="#" aria-label="DropTech home"><span class="brand-mark" aria-hidden="true">✦</span><span class="brand-name">drop<span>tech</span></span></a><p>Your campus accessory spot. Find your thing, then say hello.</p><a class="footer-whatsapp" href="https://wa.me/263775918741" target="_blank" rel="noopener noreferrer">WhatsApp: +263 775 918 741 <span aria-hidden="true">↗</span></a><div class="footer-bottom"><span>© <span id="current-year"></span> DropTech</span><span>Made for campus life <span class="footer-heart">♥</span></span></div></footer>
+    <div class="overlay" id="overlay" hidden></div><aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-header"><div><p class="drawer-kicker">YOUR LITTLE FINDS</p><h2>Your bag <span id="drawer-item-count">(0)</span></h2></div><button class="icon-button" id="cart-close" aria-label="Close shopping bag">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-empty" id="cart-empty"><div class="empty-bag-icon">♡</div><strong>Your bag is taking a breather</strong><p>Go find something that makes you smile.</p><button class="button button-dark" id="keep-shopping">Explore the shop</button></div><div class="cart-footer" id="cart-footer"><div class="subtotal-row"><span>Priced items</span><strong id="cart-subtotal"></strong></div><p>Pickup and payment details can be confirmed on WhatsApp.</p><button class="button button-dark checkout-button" id="checkout-open">Continue to order <span>→</span></button></div></aside>
+    <div class="modal-wrap" id="checkout-modal" hidden><section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title"><div class="modal-header"><div><p class="drawer-kicker">ONE LAST THING</p><h2 id="checkout-title">Let’s make it yours.</h2></div><button class="icon-button" id="checkout-close" aria-label="Close order form">×</button></div><p class="modal-intro">Share a few details, then send your order straight to WhatsApp to confirm pickup and payment.</p><form id="checkout-form"><label class="form-label" for="customer-name">Your name</label><input class="form-input" id="customer-name" name="name" autocomplete="name" placeholder="e.g. Alex" required /><label class="form-label" for="pickup-location">Where should we meet on campus?</label><input class="form-input" id="pickup-location" name="pickup" placeholder="e.g. Main library" required /><label class="form-label" for="order-note">Anything else? <span>(optional)</span></label><textarea class="form-input form-textarea" id="order-note" name="note" rows="2" placeholder="Color preference, a question, etc."></textarea><div class="order-summary"><span>Priced items</span><strong id="checkout-subtotal"></strong></div><button class="button button-dark checkout-submit" type="submit">Send order on WhatsApp <span>↗</span></button><p class="form-footnote">Your order isn’t final until you confirm it with the seller.</p></form></section></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
