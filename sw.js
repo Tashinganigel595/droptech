@@ -1,4 +1,4 @@
-const CACHE_NAME = "droptech-cache-v1";
+const CACHE_NAME = "droptech-cache-v2";
 const APP_SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./pwa.js", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {
