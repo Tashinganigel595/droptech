@@ -1,16 +1,16 @@
 const products = [
-  { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful phone protection", image: "WhatsApp Image 2026-11-13 at 04.51.30.jpeg" },
-  { id: "pearl-jelly-case", name: "Pearl Charm Jelly Case", price: 60, category: "Phone cases", emoji: "📱", color: "pink", caption: "Cute beaded design with charm", image: "WhatsApp Image 2026-11-13 at 05.04.55.jpeg" },
-  { id: "pastel-silicone-case", name: "Pastel Silicone Case", price: 58, category: "Phone cases", emoji: "📱", color: "mint", caption: "Soft pastel finish for daily wear", image: "WhatsApp Image 2026-11-13 at 05.04.56.jpeg" },
-  { id: "magsafe-case", name: "MagSafe Silicone Case", price: 80, category: "MagSafe", emoji: "🧲", color: "lavender", caption: "Magnetic compatibility with a stylish finish", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
-  { id: "diamond-lens-protector", name: "Diamond Camera Lens Protector", price: 45, category: "Screen & lens", emoji: "📷", color: "rose", caption: "Sparkling lens cover with a diamond style", image: "WhatsApp Image 2026-11-13 at 04.51.29.jpeg" },
-  { id: "tempered-glass", name: "Tempered Glass Screen Protector", price: 35, category: "Screen & lens", emoji: "🛡️", color: "teal", caption: "Clear protective glass for your screen", image: "WhatsApp Image 2026-11-11 at 20.43.14.jpeg" },
-  { id: "pearl-phone-charm", name: "Pearl Phone Charm", price: 25, category: "Accessories", emoji: "✨", color: "coral", caption: "Cute bead charm for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.33.jpeg" },
-  { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 18, category: "Chargers & cables", emoji: "🔌", color: "orange", caption: "Fast connectivity for drives and accessories", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
-  { id: "type-c-cable", name: "Type-C Charging Cable", price: 40, category: "Chargers & cables", emoji: "🔌", color: "blue", caption: "Durable cable for fast charging", image: "WhatsApp Image 2026-11-13 at 04.51.31.jpeg" },
-  { id: "airpods-pro", name: "AirPods Pro Gen 2", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds" },
-  { id: "iphone-charger", name: "Complete iPhone Charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "yellow", caption: "Complete charger set" },
-  { id: "samsung-charger", name: "Complete Samsung Charger", price: 140, category: "Chargers & cables", emoji: "🔋", color: "mint", caption: "Complete charger set" },
+  { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful protection for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.30.jpeg" },
+  { id: "pearl-jelly-case", name: "Pearl Charm Phone Case", price: 60, category: "Phone cases", emoji: "📱", color: "pink", caption: "A playful case with a decorative bead charm", image: "WhatsApp Image 2026-11-13 at 05.04.55.jpeg" },
+  { id: "pastel-silicone-case", name: "Pastel Silicone Case", price: 58, category: "Phone cases", emoji: "📱", color: "mint", caption: "A soft-touch case in a pastel style", image: "WhatsApp Image 2026-11-13 at 05.04.56.jpeg" },
+  { id: "magsafe-case", name: "MagSafe-Compatible Case", price: 80, category: "MagSafe accessories", emoji: "🧲", color: "lilac", caption: "Case with a built-in magnetic ring", image: "WhatsApp Image 2026-11-13 at 04.59.24.jpeg" },
+  { id: "diamond-lens-protector", name: "Decorative Camera Lens Protector", price: 45, category: "Screen & camera protection", emoji: "📷", color: "pink", caption: "Decorative covers for your phone camera lenses", image: "WhatsApp Image 2026-11-13 at 04.51.29.jpeg" },
+  { id: "tempered-glass", name: "Tempered Glass Screen Protector", price: 35, category: "Screen & camera protection", emoji: "🛡️", color: "mint", caption: "Tempered glass protection for your phone screen", image: "WhatsApp Image 2026-11-11 at 20.43.14.jpeg" },
+  { id: "pearl-phone-charm", name: "Beaded Phone Charm", price: 25, category: "Phone charms", emoji: "✨", color: "coral", caption: "A colorful beaded accessory for your phone", image: "WhatsApp Image 2026-11-13 at 04.51.33.jpeg" },
+  { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 18, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Connect compatible USB accessories to your device", image: "WhatsApp Image 2026-11-13 at 04.51.32.jpeg" },
+  { id: "type-c-cable", name: "Type-C Charging Cable", price: 40, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Charging cable for compatible USB-C devices" },
+  { id: "airpods-pro", name: "AirPods Pro (2nd Generation)", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds" },
+  { id: "iphone-charger", name: "iPhone Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "yellow", caption: "Complete charger set for compatible iPhone models" },
+  { id: "samsung-charger", name: "Samsung Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "mint", caption: "Complete charger set for compatible Samsung devices" },
 ];
 
 const whatsappNumber = "263775918741";
@@ -133,6 +133,7 @@ grid.addEventListener("click", (event) => {
   const button = event.target.closest("[data-add]");
   if (!button) return;
   const product = products.find((item) => item.id === button.dataset.add);
+  if (!product) return;
   const current = cart.get(product.id);
   cart.set(product.id, { ...product, quantity: current ? current.quantity + 1 : 1 });
   updateCart();
@@ -144,6 +145,7 @@ document.querySelector("#cart-items").addEventListener("click", (event) => {
   if (!button) return;
   const id = button.dataset.quantity;
   const item = cart.get(id);
+  if (!item) return;
   const quantity = item.quantity + Number(button.dataset.change);
   if (quantity <= 0) cart.delete(id);
   else cart.set(id, { ...item, quantity });
