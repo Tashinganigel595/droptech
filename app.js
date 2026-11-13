@@ -2,7 +2,7 @@ const products = [
   { id: "jelly-silicone-case", name: "Jelly Silicone Case", price: 55, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft, colorful protection for your phone", image: "jellysiliconepouch.jpeg" },
   { id: "iphone-14-silicone-case", name: "Silicone Case", price: 50, category: "Phone cases", emoji: "📱", color: "lilac", caption: "Soft-touch silicone case made for the iPhone 14", image: "silicone.jpeg" },
   { id: "pearl-jelly-case", name: "Charmed Phone Pouch", price: 45, category: "Phone cases", emoji: "📱", color: "pink", caption: "A phone pouch with a decorative charm design", image: "beadedphone-pouch.jpeg" },
-  { id: "pastel-silicone-case", name: "Pastel Silicone Case", price: 60, category: "Phone cases", emoji: "📱", color: "mint", caption: "A soft-touch case in a pastel style", image: "camera lenses.jpeg" },
+  { id: "pastel-silicone-case", name: "camera lenses", price: 60, category: "Phone cases", emoji: "📱", color: "mint", caption: "A soft-touch case in a pastel style", image: "camera lenses.jpeg" },
   { id: "magsafe-case", name: "MagSafe-Compatible Case", price: 50, category: "MagSafe accessories", emoji: "🧲", color: "lilac", caption: "Case with a built-in magnetic ring", image: "magsafe.jpeg" },
   { id: "diamond-lens-protector", name: "Diamond Lens Protector", price: 60, category: "Screen & camera protection", emoji: "📷", color: "pink", caption: "Decorative covers for your phone camera lenses", image: "camera lenses.jpeg" },
   { id: "tempered-glass", name: "Tempered Glass Screen Protector", price: 25, category: "Screen & camera protection", emoji: "🛡️", color: "mint", caption: "Tempered glass protection for your phone screen", image: "screen_protector.jpeg" },
@@ -10,7 +10,7 @@ const products = [
   { id: "usb-c-otg", name: "USB-C OTG Adapter", price: 10, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Connect compatible USB accessories to your device", image: "OTG.jpeg" },
   { id: "type-c-cable", name: "USB-C to Lightning Charging Cable", price: 45, category: "Adapters & cables", emoji: "🔌", color: "blue", caption: "Charging cable for compatible USB-C devices", image: "iphone cable.jpeg" },
   { id: "verbatim-flash-drive-16gb", name: "Verbatim 16GB Flash Drive", price: 150, category: "Storage", emoji: "💾", color: "blue", caption: "USB 2.0 flash drive for files, notes and photos", image: "flash drive.jpeg" },
-  { id: "airpods-pro", name: "AirPods Pro (2nd Generation)", price: 230, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds", image: "airpods_pro2.jpeg" },
+  { id: "airpods-pro", name: "AirPods Pro (2nd Generation)", price: 240, category: "Audio", emoji: "🎧", color: "pink", caption: "Wireless earbuds", image: "airpods_pro2.jpeg" },
   { id: "iphone-charger", name: "iPhone Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "yellow", caption: "Complete charger set for compatible iPhone models", image: "complete iphone charger.jpeg" },
   { id: "samsung-charger", name: "Samsung Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "mint", caption: "Complete charger set for compatible Samsung devices" },
 ];
