@@ -1,8 +1,8 @@
 (() => {
   // Create a Supabase project, run supabase/reviews.sql, and paste the project's
   // Project URL and anon/public key below. Never put a service_role key here.
-  const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const SUPABASE_URL = "https://ayprccrcoxjjccdvedso.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5cHJjY3Jjb3hqamNjZHZlZHNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NTA4NzcsImV4cCI6MjExMDMyNjg3N30.wVZ3PabbG-LqQlI52LhK9n2hG1hFpkQgqd7n6PdblYU";
   const TABLE_URL = `${SUPABASE_URL.replace(/\/$/, "")}/rest/v1/product_reviews`;
   const PAGE_SIZE = 500;
   const latestReviewsPerProduct = 3;
