@@ -1,83 +1,26 @@
 
 
-/* Checkout payment styling */
-.payment-section {
-  margin: 18px 0 0;
-  padding: 17px;
-  border: 1px solid #e8e5f7;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #fbfaff, #fff 76%);
-}
-.payment-section-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
-}
-.payment-section-heading > div strong,
-.payment-section-heading > div small { display: block; }
-.payment-section-heading > div strong { font-family: var(--font-heading); font-size: 13px; }
-.payment-section-heading > div small { margin-top: 3px; color: var(--muted); font-size: 10px; }
-.payment-section-icon {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 10px;
-  background: #eeebff;
-  color: var(--purple);
-  font-size: 17px;
-  font-weight: 800;
-}
-.payment-section .form-label { margin-top: 12px; }
-.payment-select { min-height: 43px; background-color: #fff; cursor: pointer; }
-.mobile-money-details {
-  margin-top: 14px;
-  padding-top: 3px;
-  border-top: 1px solid var(--line);
-}
-.mobile-money-details[hidden],
-.provider-guide[hidden],
-.airtel-tariff-guide[hidden] { display: none; }
-.currency-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.currency-input-wrap > span {
-  position: absolute;
-  left: 11px;
-  z-index: 1;
-  color: #77788c;
-  font-size: 10px;
-  font-weight: 700;
-  pointer-events: none;
-}
-.currency-input-wrap .form-input { padding-left: 48px; }
-.provider-guide {
-  margin: 12px 0 14px;
-  padding: 12px;
-  border: 1px solid #e8e5f7;
-  border-radius: 8px;
-  background: #f7f5ff;
-}
-.provider-guide > strong { display: block; color: #5143ac; font-size: 10px; }
-.provider-guide > p { margin: 5px 0 0; color: #6f6b85; font-size: 10px; line-height: 1.55; }
-.airtel-tariff-guide { margin-top: 9px; color: #615b7b; font-size: 10px; }
-.airtel-tariff-guide summary { color: #5545bd; font-weight: 700; cursor: pointer; }
-.airtel-tariff-guide ul { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 10px; margin: 9px 0; padding-left: 17px; line-height: 1.45; }
-.airtel-tariff-guide small { display: block; color: #858198; font-size: 9px; line-height: 1.5; }
-.payment-section .form-footnote,
-.payment-section .provider-confirmation { margin: 8px 0 0; color: #858198; font-size: 9px; line-height: 1.55; text-align: left; }
-.payment-section .provider-confirmation { color: #6045e5; font-weight: 700; }
-.payment-breakdown { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--line); }
-.payment-breakdown .subtotal-row { padding: 4px 0; font-size: 10px; }
-.payment-breakdown .subtotal-row strong { font-size: 11px; }
-.order-summary.payment-total-row { margin-top: 10px; padding-top: 13px; border-top: 1px solid var(--line); }
-.order-summary.payment-total-row span { font-size: 11px; font-weight: 700; }
-.order-summary.payment-total-row strong { font-size: 16px; }
-
-@media (max-width: 500px) {
-  .payment-section { padding: 14px; }
-  .airtel-tariff-guide ul { grid-template-columns: 1fr; }
-}
+/* Shared product ratings and reviews */
+.reviews-widget { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+.reviews-summary { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; min-height: 20px; }
+.reviews-average { color: #aa7100; font-size: 13px; font-weight: 800; }
+.reviews-count, .reviews-notice { color: var(--muted); font-size: 10px; }
+.review-item { margin-top: 9px; padding: 9px; border-radius: 7px; background: #f7f6fc; }
+.review-item-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; }
+.review-item-stars { flex: 0 0 auto; color: #e4a126; letter-spacing: 1px; }
+.review-item p { margin: 5px 0; color: var(--ink); font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.review-item time { color: var(--muted); font-size: 9px; }
+.review-details { margin-top: 9px; }
+.review-details summary { color: var(--purple); font-size: 10px; font-weight: 700; cursor: pointer; }
+.review-form { margin-top: 9px; padding: 10px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+.review-label { display: block; margin: 8px 0; color: var(--ink); font-size: 10px; font-weight: 700; }
+.review-optional { color: var(--muted); font-weight: 400; }
+.review-rating-picker { display: flex; gap: 2px; margin-top: 4px; }
+.review-star { padding: 1px 3px; border: 0; background: transparent; color: #c9c7d3; font-size: 22px; cursor: pointer; }
+.review-star.is-selected, .review-star:hover { color: #e4a126; }
+.review-star:focus-visible { outline: 2px solid var(--purple); border-radius: 3px; }
+.review-input { display: block; width: 100%; margin-top: 5px; padding: 8px; border: 1px solid var(--line); border-radius: 5px; background: #fff; color: var(--ink); font: inherit; font-size: 11px; }
+.review-textarea { min-height: 72px; resize: vertical; }
+.review-submit { min-height: 36px; margin-top: 7px; padding: 0 12px; font-size: 10px; }
+.review-submit:disabled { opacity: .6; cursor: wait; }
+.review-status { min-height: 14px; margin: 7px 0 0; color: var(--muted); font-size: 9px; line-height: 1.4; }

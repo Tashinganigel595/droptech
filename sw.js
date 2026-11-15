@@ -1,4 +1,4 @@
-const CACHE_NAME = "droptech-cache-v7";
+const CACHE_NAME = "droptech-cache-v8";
 const APP_SHELL = ["./", "./index.html", "./styles.css", "./workflows/styles.css", "./app.js", "./pwa.js", "./ratings.js", "./manifest.webmanifest", "./icon.svg"];
 
 async function addRatingsScript(response) {
