@@ -37,34 +37,43 @@ function setupPaymentOptions() {
     <select class="form-input" id="payment-method" name="payment" required>
       <option value="">Choose how you’ll pay</option>
       <option value="cash">Cash</option>
-      <option value="airtel-money">Airtel Money (Zambia)</option>
-      <option value="other-mobile-money">Other mobile money</option>
+      <option value="mobile-money">Mobile money</option>
     </select>
-    <div id="mobile-money-fee-section" hidden>
-      <label class="form-label" for="mobile-money-fee">Mobile money withdrawal fee (ZMW)</label>
-      <input class="form-input" id="mobile-money-fee" name="withdrawalFee" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Enter fee amount" />
-      <p class="form-footnote" id="airtel-fee-note" hidden>Suggested Airtel Money Zambia cash withdrawal fee based on your items subtotal. Please confirm the current fee with Airtel before payment; you can edit this amount.</p>
-      <p class="form-footnote" id="other-fee-note" hidden>Enter the withdrawal fee quoted by your mobile money provider.</p>
+    <div id="mobile-money-details" hidden>
+      <label class="form-label" for="mobile-network">Mobile money network</label>
+      <select class="form-input" id="mobile-network" name="network">
+        <option value="">Choose your network</option>
+        <option value="airtel">Airtel Money</option>
+        <option value="mtn">MTN MoMo</option>
+        <option value="zamtel">Zamtel Kwacha</option>
+        <option value="other">Other</option>
+      </select>
+      <label class="form-label" for="mobile-money-fee">Withdrawal fee <span>(ZMW)</span></label>
+      <div class="currency-input-wrap"><span aria-hidden="true">ZMW</span><input class="form-input" id="mobile-money-fee" name="withdrawalFee" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00" /></div>
+      <p class="form-footnote" id="airtel-fee-note" hidden>Suggested Airtel Money Zambia cash withdrawal fee based on your items subtotal. You can edit this estimate.</p>
+      <p class="form-footnote" id="manual-fee-note" hidden>Enter the withdrawal fee quoted by your mobile money provider.</p>
+      <p class="form-footnote">Fees are confirmed with the provider before payment.</p>
     </div>
     <div class="subtotal-row" style="margin-top:16px"><span>Items subtotal</span><strong id="payment-items-subtotal"></strong></div>
     <div class="subtotal-row" id="withdrawal-fee-row" hidden><span>Withdrawal fee</span><strong id="withdrawal-fee-amount"></strong></div>
   `;
   totalRow.before(paymentSection);
-  totalRow.querySelector("span").textContent = "Order total";
+  totalRow.querySelector("span").textContent = "Order total (ZMW)";
 
   const methodSelect = form.querySelector("#payment-method");
-  const feeSection = form.querySelector("#mobile-money-fee-section");
+  const mobileDetails = form.querySelector("#mobile-money-details");
+  const networkSelect = form.querySelector("#mobile-network");
   const feeInput = form.querySelector("#mobile-money-fee");
   const feeRow = form.querySelector("#withdrawal-fee-row");
   const itemsSubtotal = form.querySelector("#payment-items-subtotal");
   const feeAmount = form.querySelector("#withdrawal-fee-amount");
   const orderTotal = totalRow.querySelector("strong");
   const airtelFeeNote = form.querySelector("#airtel-fee-note");
-  const otherFeeNote = form.querySelector("#other-fee-note");
+  const manualFeeNote = form.querySelector("#manual-fee-note");
   let lastSuggestedSubtotal = null;
 
-  // Airtel Money Zambia cash withdrawal tariff bands from the guide effective
-  // 7 September 2024. Treat these as estimates and confirm the live tariff.
+  // Airtel Money Zambia cash withdrawal bands from the published guide effective
+  // 7 September 2024. The estimate is editable and should be confirmed by provider.
   const airtelWithdrawalFees = [
     { max: 150, fee: 2.5 },
     { max: 300, fee: 5 },
@@ -75,61 +84,65 @@ function setupPaymentOptions() {
     { max: 10000, fee: 60 },
   ];
   const asAmount = (text) => Number(String(text).replace(/[^\d.-]/g, "")) || 0;
-  const formatMoney = (amount) => `K ${amount.toLocaleString("en", { maximumFractionDigits: 2 })}`;
+  const formatMoney = (amount) => `ZMW ${amount.toLocaleString("en", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const getAirtelFee = (amount) => airtelWithdrawalFees.find((band) => amount <= band.max)?.fee ?? 60;
 
   const updatePaymentSummary = () => {
     const subtotal = asAmount(document.querySelector("#cart-subtotal")?.textContent);
-    const isAirtel = methodSelect.value === "airtel-money";
-    const isOtherMobile = methodSelect.value === "other-mobile-money";
-    const isMobileMoney = isAirtel || isOtherMobile;
+    const isMobileMoney = methodSelect.value === "mobile-money";
+    const isAirtel = isMobileMoney && networkSelect.value === "airtel";
+    const needsManualFee = isMobileMoney && networkSelect.value && !isAirtel;
 
     if (isAirtel && (lastSuggestedSubtotal === null || subtotal !== lastSuggestedSubtotal)) {
       feeInput.value = getAirtelFee(subtotal).toString();
       lastSuggestedSubtotal = subtotal;
+    } else if (!isAirtel) {
+      lastSuggestedSubtotal = null;
+      if (!isMobileMoney || !networkSelect.value) feeInput.value = "";
     }
-    if (!isAirtel) lastSuggestedSubtotal = null;
 
     const fee = isMobileMoney ? (Number(feeInput.value) || 0) : 0;
-    feeSection.hidden = !isMobileMoney;
-    feeRow.hidden = !isMobileMoney;
-    feeInput.required = isMobileMoney;
+    mobileDetails.hidden = !isMobileMoney;
+    networkSelect.required = isMobileMoney;
+    feeRow.hidden = !isMobileMoney || !networkSelect.value;
+    feeInput.required = needsManualFee || isAirtel;
     airtelFeeNote.hidden = !isAirtel;
-    otherFeeNote.hidden = !isOtherMobile;
+    manualFeeNote.hidden = !needsManualFee;
     itemsSubtotal.textContent = formatMoney(subtotal);
     feeAmount.textContent = formatMoney(fee);
     orderTotal.textContent = formatMoney(subtotal + fee);
   };
 
   methodSelect.addEventListener("change", updatePaymentSummary);
+  networkSelect.addEventListener("change", updatePaymentSummary);
   feeInput.addEventListener("input", updatePaymentSummary);
   document.querySelector("#checkout-open")?.addEventListener("click", updatePaymentSummary);
   updatePaymentSummary();
 
-  // Capture the form submit before the basic checkout handler so the WhatsApp
-  // message contains the selected payment method and correct fee-adjusted total.
+  // Capture before the basic checkout handler so payment details appear once.
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
 
     const data = new FormData(form);
     const subtotal = asAmount(document.querySelector("#cart-subtotal")?.textContent);
-    const payment = data.get("payment");
-    const isMobileMoney = payment === "airtel-money" || payment === "other-mobile-money";
+    const isMobileMoney = data.get("payment") === "mobile-money";
     const fee = isMobileMoney ? Number(data.get("withdrawalFee")) || 0 : 0;
+    const network = data.get("network");
+    const networkLabels = { airtel: "Airtel Money", mtn: "MTN MoMo", zamtel: "Zamtel Kwacha", other: "Other" };
     const itemLines = [...document.querySelectorAll("#cart-items .cart-line")].map((line) => {
       const name = line.querySelector(".cart-line-title")?.textContent.trim();
       const quantity = line.querySelector(".quantity-control span")?.textContent.trim();
       const lineTotal = line.querySelector(".cart-line-total")?.textContent.trim();
       return `- ${name} x${quantity}: ${lineTotal}`;
     });
-    const paymentLabel = payment === "airtel-money" ? "Airtel Money (Zambia)" : payment === "other-mobile-money" ? "Other mobile money" : "Cash";
     const message = [
       "Hello! I'd like to place a DropTech order:",
       ...itemLines,
       `Items subtotal: ${formatMoney(subtotal)}`,
-      `Payment method: ${paymentLabel}`,
-      isMobileMoney ? `Mobile money withdrawal fee: ${formatMoney(fee)}` : "",
+      `Payment method: ${isMobileMoney ? `Mobile money — ${networkLabels[network] || network}` : "Cash"}`,
+      isMobileMoney ? `Withdrawal fee: ${formatMoney(fee)}` : "",
+      isMobileMoney ? "Withdrawal fee to be confirmed with provider before payment." : "",
       `Order total: ${formatMoney(subtotal + fee)}`,
       `Name: ${data.get("name")}`,
       `Campus meeting place: ${data.get("pickup")}`,
