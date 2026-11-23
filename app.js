@@ -15,6 +15,18 @@ const products = [
   { id: "samsung-charger", name: "Samsung Charger Set", price: 140, category: "Chargers", emoji: "🔋", color: "mint", caption: "Complete charger set for compatible Samsung devices" },
 ];
 
+const PROMO = {
+  end: new Date("2026-11-27T23:59:59+02:00"), // Friday night, Zimbabwe/Zambia time
+  percent: 15,
+  overrides: { "airpods-pro": 5 },
+};
+
+function getPrice(product) {
+  if (Date.now() > PROMO.end.getTime()) return product.price;
+  const percent = PROMO.overrides[product.id] ?? PROMO.percent;
+  return Math.round(product.price * (100 - percent) / 100);
+}
+
 const whatsappNumber = "263775918741";
 const grid = document.querySelector("#product-grid");
 const categoryList = document.querySelector("#category-list");
@@ -50,24 +62,30 @@ function renderProducts() {
     return matchesCategory && matchesSearch;
   });
 
-  grid.innerHTML = visibleProducts.map((product) => `
-    <article class="product-card">
-      <div class="product-visual ${product.color}">
-        ${product.image
-          ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;" />`
-          : `<span class="product-emoji" aria-hidden="true">${product.emoji}</span>`}
-        <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${escapeHtml(product.name)} to bag">+</button>
-      </div>
-      <div class="product-info">
-        <p class="product-category">${escapeHtml(product.category)}</p>
-        <div class="product-title-row">
-          <h3 class="product-title">${escapeHtml(product.name)}</h3>
-          <span class="product-price">${formatPrice(product.price)}</span>
+  grid.innerHTML = visibleProducts.map((product) => {
+    const salePrice = getPrice(product);
+    const priceMarkup = salePrice < product.price
+      ? `<span class="price-old"><s>${formatPrice(product.price)}</s></span> <span class="price-sale">${formatPrice(salePrice)}</span>`
+      : formatPrice(product.price);
+    return `
+      <article class="product-card">
+        <div class="product-visual ${product.color}">
+          ${product.image
+            ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;" />`
+            : `<span class="product-emoji" aria-hidden="true">${product.emoji}</span>`}
+          <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${escapeHtml(product.name)} to bag">+</button>
         </div>
-        <p class="product-caption">${escapeHtml(product.caption)}</p>
-      </div>
-    </article>
-  `).join("");
+        <div class="product-info">
+          <p class="product-category">${escapeHtml(product.category)}</p>
+          <div class="product-title-row">
+            <h3 class="product-title">${escapeHtml(product.name)}</h3>
+            <span class="product-price">${priceMarkup}</span>
+          </div>
+          <p class="product-caption">${escapeHtml(product.caption)}</p>
+        </div>
+      </article>
+    `;
+  }).join("");
 
   emptyState.hidden = visibleProducts.length > 0;
 }
@@ -82,21 +100,26 @@ function updateCart() {
   document.querySelector("#checkout-subtotal").textContent = formatPrice(subtotal);
   document.querySelector("#cart-footer").classList.toggle("is-hidden", totalItems === 0);
   document.querySelector("#cart-empty").classList.toggle("show", totalItems === 0);
-  document.querySelector("#cart-items").innerHTML = items.map((item) => `
-    <article class="cart-line">
-      <div class="cart-thumb ${item.color}" aria-hidden="true">${item.emoji}</div>
-      <div>
-        <h3 class="cart-line-title">${escapeHtml(item.name)}</h3>
-        <p class="cart-line-price">${formatPrice(item.price)} each</p>
-        <div class="quantity-control" aria-label="Quantity for ${escapeHtml(item.name)}">
-          <button type="button" data-quantity="${item.id}" data-change="-1" aria-label="Remove one ${escapeHtml(item.name)}">−</button>
-          <span>${item.quantity}</span>
-          <button type="button" data-quantity="${item.id}" data-change="1" aria-label="Add one ${escapeHtml(item.name)}">+</button>
+  document.querySelector("#cart-items").innerHTML = items.map((item) => {
+    const linePrice = item.price < item.originalPrice
+      ? `<s class="price-old">${formatPrice(item.originalPrice)}</s> <span class="price-sale">${formatPrice(item.price)}</span>`
+      : formatPrice(item.price);
+    return `
+      <article class="cart-line">
+        <div class="cart-thumb ${item.color}" aria-hidden="true">${item.emoji}</div>
+        <div>
+          <h3 class="cart-line-title">${escapeHtml(item.name)}</h3>
+          <p class="cart-line-price">${linePrice} each</p>
+          <div class="quantity-control" aria-label="Quantity for ${escapeHtml(item.name)}">
+            <button type="button" data-quantity="${item.id}" data-change="-1" aria-label="Remove one ${escapeHtml(item.name)}">−</button>
+            <span>${item.quantity}</span>
+            <button type="button" data-quantity="${item.id}" data-change="1" aria-label="Add one ${escapeHtml(item.name)}">+</button>
+          </div>
         </div>
-      </div>
-      <span class="cart-line-total">${formatPrice(item.price * item.quantity)}</span>
-    </article>
-  `).join("");
+        <span class="cart-line-total">${formatPrice(item.price * item.quantity)}</span>
+      </article>
+    `;
+  }).join("");
 }
 
 function openCart() {
@@ -137,7 +160,12 @@ grid.addEventListener("click", (event) => {
   const product = products.find((item) => item.id === button.dataset.add);
   if (!product) return;
   const current = cart.get(product.id);
-  cart.set(product.id, { ...product, quantity: current ? current.quantity + 1 : 1 });
+  cart.set(product.id, {
+    ...product,
+    price: getPrice(product),
+    originalPrice: product.price,
+    quantity: current ? current.quantity + 1 : 1,
+  });
   updateCart();
   showToast(`${product.name} added to your bag`);
 });
